@@ -6,14 +6,64 @@
     box-sizing: border-box;
     font-family: "Pixelify Sans", sans-serif;
     font-optical-sizing: auto;
-    font-weight: normal;
-    font-style: normal;
     color: white;
 }
 
 body {
-    margin: 0;
     background: #000316;
+    display: flex;
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    align-items:center;
+
+}
+
+h1 {
+    margin: 10px 0;
+}
+
+p {
+    margin: 10px 0;
+}
+
+.botaoMoeda {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.botaoMoeda img {
+    width: 300px;
+}
+
+.upgrade {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 40%;
+}
+
+.upgrade button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-right: 20px;
+    padding: 10px;
+    font-size: 14px;
+    background-color: rgb(65, 63, 63);
+    border: none;
+    cursor: pointer;
+}
+
+.upgrade button:hover {
+    background-color: #959292;
 }
 
 .moeda {
