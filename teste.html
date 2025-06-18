@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo do Clique</title>
+    <link rel="stylesheet" href="assets/css/style_2.css">
+</head>
+
+<body>
+
+    <div class="conteudo">
+        <h1>Jogo de clique</h1>
+        <div style="display: flex; align-items: center;">
+            <div class="moeda"></div>
+            <p style="margin-left: 5px;">Pontuação: <span id="pontos">0</span></p>
+        </div>
+
+        <p>Valor por clique: <span id="ValorClique">1</span></p>
+        <p>Upgrades comprados: <span id="upgrades">0</span></p>
+
+        <button class="botaoMoeda">
+            <img src="png/moeda_sem_fundo.png" alt="moeda" />
+        </button>
+    </div>
+
+    <div class="upgrade">
+        <h2>Upgrades:</h2>
+        <button> 1° Upgrade (+1) - Custa 10 pts</button><br>
+        <button> 2° Upgrade (+8) - Custa 50 pts</button><br>
+        <button> 3° Upgrade (+32) - Custa 100 pts</button><br>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>
