@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Pixelify Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+    color: white;
+}
+
+body {
+    margin: 0;
+    background: #000316;
+}
+
+.moeda {
+    height: 50px;
+    width: 50px;
+    background-size: 330px;
+    background-image: url(../images/spirte_moedas.png);
+    background-repeat: no-repeat;
+    background-position: -3px -9px;
+    animation: girar-moeda 1s infinite linear;
+}
+
+.moeda.pular {
+    animation: girar-moeda 1s infinite linear, pular-moeda 2s infinite linear;
+}
+
+
+@keyframes pular-moeda {
+    0% {
+        margin-bottom: 0;
+    }
+
+    50% {
+        margin-bottom: 20px;
+    }
+
+    100% {
+        margin-bottom: 0;
+    }
+}
+
+@keyframes girar-moeda {
+
+    0%,
+    16.29% {
+        background-position-x: -3px;
+    }
+
+    16.3%,
+    33.29% {
+        background-position-x: -55px;
+    }
+
+    33.3%,
+    49.99% {
+        background-position-x: -109px;
+    }
+
+    50%,
+    66.59% {
+        background-position-x: -163px;
+    }
+
+    66.6%,
+    83.29% {
+        background-position-x: -221px;
+    }
+
+    83.3%,
+    99.99% {
+        background-position-x: -278px;
+    }
+
+    100% {
+        background-position-x: -3px;
+    }
+}
