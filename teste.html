@@ -18,18 +18,18 @@
         </div>
 
         <p>Valor por clique: <span id="ValorClique">1</span></p>
-        <p>Upgrades comprados: <span id="upgrades">0</span></p>
+        <p>Upgrades comprados: <span id="comprados">0</span></p>
 
-        <button class="botaoMoeda">
+        <button class="botaoMoeda" id="clique">
             <img src="png/moeda_sem_fundo.png" alt="moeda" />
         </button>
     </div>
 
     <div class="upgrade">
         <h2>Upgrades:</h2>
-        <button> 1° Upgrade (+1) - Custa 10 pts</button><br>
-        <button> 2° Upgrade (+8) - Custa 50 pts</button><br>
-        <button> 3° Upgrade (+32) - Custa 100 pts</button><br>
+        <button onclick="comprarValorClique(1)"> 1° Upgrade (+1) - Custa 10 pts</button><br>
+        <button onclick="comprarValorClique(2)"> 2° Upgrade (+8) - Custa 50 pts</button><br>
+        <button onclick="comprarValorClique(3)"> 3° Upgrade (+32) - Custa 100 pts</button><br>
     </div>
 
     <script src="assets/js/script.js"></script>
