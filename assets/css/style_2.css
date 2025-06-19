@@ -81,6 +81,11 @@ p {
 }
 
 
+.moeda.subir {
+    animation: subir-moeda 1.5s linear;
+}
+
+
 @keyframes pular-moeda {
     0% {
         margin-bottom: 0;
@@ -92,6 +97,16 @@ p {
 
     100% {
         margin-bottom: 0;
+    }
+}
+
+@keyframes subir-moeda {
+    0% {
+        top: 0;
+    }
+
+    100% {
+       top: 200px;
     }
 }
 

@@ -9,6 +9,7 @@ function pontuarClique() {
     console.log('fim: ' + pontuacao);
     atualizarElementoPontos(pontuacao);
     tocarSomMoeda();
+    adicionarMoedaNaTela();
 }
 
 function atualizarElementoPontos(valor) {
@@ -76,3 +77,25 @@ function tocarSomCompra() {
     audioCompra.play();
 }
 
+function adicionarMoedaNaTela(){
+    let tamanhoMoeda = Math.floor(Math.random() * (80 - 20) ) + 20;
+    let elementoMoeda = document.createElement("div");
+    elementoMoeda.classList = ['moeda'];
+    elementoMoeda.style.height = tamanhoMoeda + 'px';
+    elementoMoeda.style.width = tamanhoMoeda + 'px';
+    elementoMoeda.style.position = 'absolute';
+
+    let larguraTela = window.innerWidth;
+    let alturaTela = window.innerHeight;
+    let top = Math.floor(Math.random() * (alturaTela - 0) ) + 0;
+    let left = Math.floor(Math.random() * (larguraTela - 0) ) + 0;
+    elementoMoeda.style.top = top + 'px';
+    elementoMoeda.style.left = left + 'px';
+    document.body.appendChild(elementoMoeda);
+
+    $(elementoMoeda).animate({top: top - 800}, 1500);
+
+    setTimeout(()=>{
+        elementoMoeda.remove(); 
+    }, 1500);
+}
