@@ -8,6 +8,7 @@ function pontuarClique() {
     pontuacao = pontuacao + valorClique;
     console.log('fim: ' + pontuacao);
     atualizarElementoPontos(pontuacao);
+    tocarSomMoeda();
 }
 
 function atualizarElementoPontos(valor) {
@@ -54,9 +55,24 @@ function comprarValorClique(fase) {
             comprados = 1 + comprados;
             atualizarElementoComprados(comprados);
             atualizarElementoPontos(pontuacao);
+            tocarSomCompra();
         } else {
             alert('POBRE!!!');
         }
     }
+}
+
+
+let audio = new Audio('assets/audio/moeda.mp3');
+function tocarSomMoeda() {
+    audio.currentTime = 0.3;
+    audio.play();
+}
+
+
+let audioCompra = new Audio('assets/audio/compra.mp3');
+function tocarSomCompra() {
+    audioCompra.currentTime = 0;
+    audioCompra.play();
 }
 

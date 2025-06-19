@@ -69,10 +69,10 @@ p {
 .moeda {
     height: 50px;
     width: 50px;
-    background-size: 330px;
+    background-size: 650% 135%;
     background-image: url(../images/spirte_moedas.png);
     background-repeat: no-repeat;
-    background-position: -3px -9px;
+    background-position: 1.19% 50%;
     animation: girar-moeda 1s infinite linear;
 }
 
@@ -99,35 +99,35 @@ p {
 
     0%,
     16.29% {
-        background-position-x: -3px;
+        background-position-x: 1.19%;
     }
 
     16.3%,
     33.29% {
-        background-position-x: -55px;
+        background-position-x: 20%;
     }
 
     33.3%,
     49.99% {
-        background-position-x: -109px;
+        background-position-x: 40%;
     }
 
     50%,
     66.59% {
-        background-position-x: -163px;
+        background-position-x: 60%;
     }
 
     66.6%,
     83.29% {
-        background-position-x: -221px;
+        background-position-x: 80%;
     }
 
     83.3%,
     99.99% {
-        background-position-x: -278px;
+        background-position-x: 100%;
     }
 
     100% {
-        background-position-x: -3px;
+        background-position-x: 1.19%;
     }
 }
