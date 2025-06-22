@@ -5,35 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jogo de clique</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
 </head>
 <body>
-  <div class="conteudo">
-    <h1>Jogo de clique</h1>
-    <div style="display: flex; align-items: center;">
-      <div class="moeda" style="height: 20px; width: 20px;"></div>
-      <p style="margin-left: 5px;">Pontuação: <span id="pontos">0</span></p>
-    </div>
-    <p>Valor por clique: <span id="valor-por-clique">1</span></p>
-    <p>Upgrades comprados: <span id="comprados">0</span></p>
-    <button class="botao-moeda" id="clique">
-      <img style="pointer-events: none;" src="assets/images/moeda.png" alt="Moeda" />
-    </button>
-  </div>
-  <div class="upgrade">
-    <h2>Upgrades</h2>
-    <button onclick="comprarValorClique(1)">
-      <p>+1 ponto por clique</p>
-      <p>comprar por 10 pontos</p>
-    </button>
-    <button onclick="comprarValorClique(2)">
-      <p>+8 pontos por clique</p>
-      <p>comprar por 50 pontos</p>
-    </button>
-    <button onclick="comprarValorClique(3)">
-      <p>+32 pontos por clique</p>
-      <p>comprar por 100 pontos</p>
-    </button>
-  </div>
+  <main>
+    <section class="conteudo">
+      <h1>Jogo de clique</h1>
+      <div class="placar">
+        <div class="pontuacao">
+          <span>Pontuação</span>
+          <div>
+            <div class="moeda"></div>
+            <span id="pontos">0</span>
+          </div>
+        </div>
+        <div>
+          <span>Pontos por clique</span>
+          <span id="pontos-por-clique">1</span>
+        </div>
+        <div>
+          <span>Upgrades comprados</span>
+          <span id="qtde-upgrades-comprados">0</span>
+        </div>
+      </div>
+      <button class="botao-moeda" id="clique">
+        <img src="assets/images/moeda.png" alt="Moeda" />
+      </button>
+      <div class="fim-de-jogo">Parabéns, você ganhou!</div>
+    </section>
+    <section class="upgrades">
+      <h2>Upgrades</h2>
+      <button onclick="comprarUpgrade(1)">
+        <p>+1 ponto por clique</p>
+        <p>comprar por 10 pontos</p>
+      </button>
+      <button onclick="comprarUpgrade(2)">
+        <p>+8 pontos por clique</p>
+        <p>comprar por 50 pontos</p>
+      </button>
+      <button onclick="comprarUpgrade(3)">
+        <p>+32 pontos por clique</p>
+        <p>comprar por 100 pontos</p>
+      </button>
+    </section>
+  </main>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="assets/js/script.js"></script>
 </body>

@@ -1,105 +1,97 @@
-let valorClique = 1;
+// Valores do placar
 let pontuacao = 0;
-let comprados = 0;
+let pontosPorClique = 1;
+let qtdeUpgradesComprados = 0;
 
-function pontuarClique() {
-    pontuacao = pontuacao + valorClique;
-    atualizarElementoPontos(pontuacao);
-    tocarSomMoeda();
-    adicionarMoedaNaTela();
-}
+// Upgrades
+const upgrades = {
+  1: { custo: 10,  somarAoPontosPorClique: 1  },
+  2: { custo: 50,  somarAoPontosPorClique: 8  },
+  3: { custo: 100, somarAoPontosPorClique: 32 }
+};
 
-function atualizarElementoPontos(valor) {
-    let elementoPonto = document.getElementById('pontos');
-    elementoPonto.innerHTML = valor;
-}
-
-function atualizarElementoComprados(valor) {
-    let elementoPonto = document.getElementById('comprados');
-    elementoPonto.innerHTML = valor;
-}
-
-document.getElementById('clique').addEventListener('click', pontuarClique);
-
-function atualizarElementoValorClique(valor) {
-    let elementoPonto = document.getElementById('valor-por-clique');
-    elementoPonto.innerHTML = valor;
-}
-
-function aumentarValorClique(soma) {
-    valorClique = soma + valorClique;
-    atualizarElementoValorClique(valorClique);
-}
-
-function comprarValorClique(fase) {
-    let custo;
-    let upgrade;
-
-    switch (fase) {
-        case 1:
-            custo = 10;
-            upgrade = 1;
-            break;
-        case 2:
-            custo = 50;
-            upgrade = 8;
-            break;
-        case 3:
-            custo = 100;
-            upgrade = 32;
-            break;
-        default:
-            alert('NÃO EXISTE ESSA FASE');
-            break;
-    }
-
-    if (custo) {
-        if (pontuacao >= custo) {
-            aumentarValorClique(upgrade);
-            pontuacao = pontuacao - custo;
-            comprados = 1 + comprados;
-            atualizarElementoComprados(comprados);
-            atualizarElementoPontos(pontuacao);
-            tocarSomCompra();
-        } else {
-            alert('POBRE!!!');
-        }
-    }
-}
-
-
-let audio = new Audio('assets/audio/moeda.mp3');
+// Som ao clicar na moeda
+const audioMoeda = new Audio('assets/audio/moeda.mp3');
 function tocarSomMoeda() {
-    audio.currentTime = 0.3;
-    audio.play();
+  audioMoeda.currentTime = 0.3;
+  audioMoeda.play();
 }
 
-
-let audioCompra = new Audio('assets/audio/compra.mp3');
+// Som ao comprar um upgrade
+const audioCompra = new Audio('assets/audio/compra.mp3');
 function tocarSomCompra() {
-    audioCompra.currentTime = 0;
-    audioCompra.play();
+  audioCompra.currentTime = 0;
+  audioCompra.play();
 }
 
-function adicionarMoedaNaTela(){
-    let tamanhoMoeda = Math.floor(Math.random() * (80 - 20) ) + 20;
-    let elementoMoeda = document.createElement("div");
-    elementoMoeda.classList = ['moeda'];
-    elementoMoeda.style.height = tamanhoMoeda + 'px';
-    elementoMoeda.style.width = tamanhoMoeda + 'px';
-    elementoMoeda.style.position = 'absolute';
+// Exibir moeda flutuante na tela
+function exibirMoeda() {
 
-    let larguraTela = window.innerWidth;
-    let alturaTela = window.innerHeight;
-    let top = Math.floor(Math.random() * (alturaTela - 0) ) + 0;
-    let left = Math.floor(Math.random() * (larguraTela - 0) ) + 0;
-    elementoMoeda.style.top = top + 'px';
-    elementoMoeda.style.left = left + 'px';
-    document.body.appendChild(elementoMoeda);
+  // Gera um tamanho aleatório para a moeda entre 20 e 80 pixels
+  let tamanho = Math.floor(Math.random() * (80 - 20)) + 20;
 
-    $(elementoMoeda).animate({top: top - 800}, 1500);
+  // Gera uma posição vertical aleatória para a moeda com base na altura da tela
+  let top = Math.floor(Math.random() * window.innerHeight) - tamanho;
 
-    setTimeout(()=>{
-        elementoMoeda.remove(); 
-    }, 1500);
+  // Gera uma posição horizontal aleatória para a moeda com base na largura da tela
+  let left = Math.floor(Math.random() * window.innerWidth) - tamanho;
+
+  // Cria uma div que será a moeda
+  let moeda = document.createElement('div');
+  moeda.className = 'moeda';
+  Object.assign(moeda.style, {
+    position: 'absolute',
+    height: `${tamanho}px`,
+    width: `${tamanho}px`,
+    top: `${top}px`,
+    left: `${left}px`
+  });
+
+  // Põe a moeda no HTML
+  document.body.appendChild(moeda);
+
+  // Animação de 1,5 segundo da moeda sendo puxada para cima
+  $(moeda).animate({ top: top - 800 }, 1500);
+
+  // Após o 1,5 segundo remove a moeda do HTML
+  setTimeout(() => {
+    moeda.remove();
+  }, 1500);
+}
+
+// Funções para atualizar os valores do placar na tela
+const atualizarPlacar = {
+  pontuacao:             () => document.getElementById('pontos').innerHTML                  = pontuacao,
+  valorPorClique:        () => document.getElementById('pontos-por-clique').innerHTML       = pontosPorClique,
+  qtdeUpgradesComprados: () => document.getElementById('qtde-upgrades-comprados').innerHTML = qtdeUpgradesComprados
+};
+
+// Função executada ao clicar na moeda
+document.getElementById('clique').addEventListener('click', function() {
+  pontuacao += pontosPorClique;
+  atualizarPlacar.pontuacao();
+  tocarSomMoeda();
+  exibirMoeda();
+
+  // Exibe mensagem que o jogo acabou
+  if (pontuacao >= 500) {
+    document.querySelector(".fim-de-jogo").style.display = "flex";
+    document.querySelector(".botao-moeda").style.display = "none";
+  }
+});
+
+function comprarUpgrade(numeroDoUpgrade) {
+  const { custo, somarAoPontosPorClique } = upgrades[numeroDoUpgrade];
+
+  if (pontuacao >= custo) {
+    pontuacao -= custo;
+    pontosPorClique += somarAoPontosPorClique;
+    qtdeUpgradesComprados += 1;
+    atualizarPlacar.pontuacao();
+    atualizarPlacar.valorPorClique();
+    atualizarPlacar.qtdeUpgradesComprados();
+    tocarSomCompra();
+  } else {
+    alert('Você não possui pontos suficientes para comprar este upgrade :(');
+  }
 }
